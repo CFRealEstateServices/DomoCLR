@@ -1,0 +1,7 @@
+/bin/*
+/*.dbml
+/obj/*
+/*.suo
+/.vs/*
+/*.dbmdl
+/*.user

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DOMO_CLR</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{c42e672a-0972-4dce-b3df-e5f935db00a5}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DOMO_CLR</RootNamespace>
+    <AssemblyName>DOMO_CLR</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetLanguage>VB</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <TargetFrameworkProfile />
+    <PermissionSet>UNSAFE</PermissionSet>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>DomoCLR.snk</AssemblyOriginatorKeyFile>
+    <Trustworthy>True</Trustworthy>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Sprocs" />
+    <Folder Include="Classes" />
+    <Folder Include="Classes\Output" />
+    <Folder Include="Classes\Util" />
+    <Folder Include="Classes\DOMO" />
+    <Folder Include="External Libraries" />
+    <Folder Include="External Libraries\JSONDotNet" />
+    <Folder Include="Classes\DOMO\Services" />
+    <Folder Include="Classes\DOMO\Models" />
+    <Folder Include="Classes\DOMO\Models\Auth" />
+    <Folder Include="Classes\DOMO\Models\Data" />
+    <Folder Include="Classes\DOMO\Models\User" />
+    <Folder Include="Classes\DOMO\Services\Base" />
+    <Folder Include="Default Scripts" />
+    <Folder Include="Default Scripts\Assemblies" />
+    <Folder Include="Default Scripts\Tables" />
+    <Folder Include="Classes\DOMO\Models\Group" />
+    <Folder Include="Default Scripts\Database_Settings" />
+    <Folder Include="Sprocs\CLR" />
+    <Folder Include="Sprocs\CLR\User" />
+    <Folder Include="Sprocs\CLR\Group" />
+    <Folder Include="Sprocs\CLR\Data" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Functions" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>External Libraries\JSONDotNet\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Output\SQLOutput.vb" />
+    <Compile Include="Classes\Output\TypeConverter.vb" />
+    <Compile Include="Classes\Util\CLRConnection.vb" />
+    <Compile Include="Classes\Util\DataTableUtils.vb" />
+    <Compile Include="Classes\DOMO\Models\User\DOMOExistingUser.vb" />
+    <Compile Include="Classes\DOMO\Models\Auth\DOMOAuthorization.vb" />
+    <Compile Include="Classes\DOMO\Models\Data\DOMODatasetMetadata.vb" />
+    <Compile Include="Classes\DOMO\Services\Base\DOMOServiceBase.vb" />
+    <Compile Include="Classes\DOMO\Models\User\DOMONewUser.vb" />
+    <Compile Include="Classes\DOMO\Services\UserService.vb" />
+    <Compile Include="Classes\DOMO\Services\DataService.vb" />
+    <Compile Include="Classes\DOMO\Services\AuthService.vb" />
+    <Compile Include="Classes\DOMO\Models\Group\DOMONewGroup.vb" />
+    <Compile Include="Classes\DOMO\Services\GroupService.vb" />
+    <Compile Include="Classes\DOMO\Models\Group\DOMOExistingGroup.vb" />
+    <Compile Include="Sprocs\CLR\User\UsersCreate.vb" />
+    <Compile Include="Sprocs\CLR\User\UsersDelete.vb" />
+    <Compile Include="Sprocs\CLR\User\UsersGet.vb" />
+    <Compile Include="Sprocs\CLR\User\UsersList.vb" />
+    <Compile Include="Sprocs\CLR\User\UsersUpdate.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsAddMember.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsCreate.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsDelete.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsGet.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsList.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsListMembers.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsRemoveMember.vb" />
+    <Compile Include="Sprocs\CLR\Group\GroupsUpdate.vb" />
+    <Compile Include="Sprocs\CLR\Data\DownloadFromDOMO.vb" />
+    <Compile Include="Classes\DOMO\Models\Group\DOMOUpdateGroup.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="External Libraries\JSONDotNet\Newtonsoft.Json.dll" />
+    <None Include="README.md" />
+    <None Include="External Libraries\JSONDotNet\LICENSE.md" />
+    <None Include="DomoCLR.snk" />
+    <None Include="LICENSE" />
+    <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Default Scripts\Assemblies\01_System.Runtime.Serialization.sql" />
+    <None Include="Default Scripts\Assemblies\02_Newtonsoft.Json.sql" />
+    <None Include="Default Scripts\Assemblies\03_System.Web.sql" />
+    <None Include="Default Scripts\Database_Settings\01_Enable_CLR.sql" />
+    <PreDeploy Include="Default Scripts\Master.PreDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Functions\fn_GetDefaultDOMODomain.sql" />
+    <Build Include="dbo\Stored Procedures\AddGroupMapping.sql" />
+    <Build Include="dbo\Stored Procedures\AddUserMapping.sql" />
+    <Build Include="dbo\Stored Procedures\Download_Sample_Data_Set.sql" />
+    <Build Include="dbo\Stored Procedures\GroupsCreateWithTracking.sql" />
+    <Build Include="dbo\Stored Procedures\GroupsDeleteWithTracking.sql" />
+    <Build Include="dbo\Stored Procedures\IdentityManagement_SyncAll.sql" />
+    <Build Include="dbo\Stored Procedures\IdentityManagement_SyncGroupMembershipsToDOMO.sql" />
+    <Build Include="dbo\Stored Procedures\IdentityManagement_SyncGroupsToDOMO.sql" />
+    <Build Include="dbo\Stored Procedures\IdentityManagement_SyncUsersToDOMO.sql" />
+    <Build Include="dbo\Stored Procedures\RemoveGroupMapping.sql" />
+    <Build Include="dbo\Stored Procedures\RemoveUserMapping.sql" />
+    <Build Include="dbo\Stored Procedures\Sync_DownloadGroupMembership.sql" />
+    <Build Include="dbo\Stored Procedures\Sync_DownloadGroups.sql" />
+    <Build Include="dbo\Stored Procedures\Sync_DownloadUsers.sql" />
+    <Build Include="dbo\Stored Procedures\TryImport_GroupMappings.sql" />
+    <Build Include="dbo\Stored Procedures\TryImport_UserMappings.sql" />
+    <Build Include="dbo\Stored Procedures\UsersCreateWithTracking.sql" />
+    <Build Include="dbo\Stored Procedures\UsersDeleteWithTracking.sql" />
+    <Build Include="dbo\Tables\_DOMOAccessTokens.sql" />
+    <Build Include="dbo\Tables\_DOMODefaultDomain.sql" />
+    <Build Include="dbo\Tables\_DOMOSettings.sql" />
+    <Build Include="dbo\Tables\ActualDOMOGroupMembership.sql" />
+    <Build Include="dbo\Tables\ActualDOMOGroups.sql" />
+    <Build Include="dbo\Tables\ActualDOMOUsers.sql" />
+    <Build Include="dbo\Tables\DOMOUserDomainsToBlockFromManagementViaAPI.sql" />
+    <Build Include="dbo\Tables\DOMOUsersToBlockFromManagementViaAPI.sql" />
+    <Build Include="dbo\Tables\GroupRecordMappings.sql" />
+    <Build Include="dbo\Tables\IntendedDOMOGroupMembership.sql" />
+    <Build Include="dbo\Tables\IntendedDOMOGroups.sql" />
+    <Build Include="dbo\Tables\IntendedDOMOUsers.sql" />
+    <Build Include="dbo\Tables\UserRecordMappings.sql" />
+    <Build Include="dbo\Views\vw_ActualDomoGroupsWithFieldChecksum.sql" />
+    <Build Include="dbo\Views\vw_ActualDomoUsersWithFieldChecksum.sql" />
+    <Build Include="dbo\Views\vw_GroupDeltas.sql" />
+    <Build Include="dbo\Views\vw_GroupMembershipDeltas.sql" />
+    <Build Include="dbo\Views\vw_IntendedDomoGroupsWithFieldChecksum.sql" />
+    <Build Include="dbo\Views\vw_IntendedDomoUsersWithFieldChecksum.sql" />
+    <Build Include="dbo\Views\vw_UserDeltas.sql" />
+  </ItemGroup>
+</Project>
